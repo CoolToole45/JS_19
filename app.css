@@ -1,0 +1,13 @@
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group input, .form-group select {
+   padding: 8px 15px;
+}
+.form-group span {
+    display: block;
+}
+.form-group .form-error-message {
+    margin: 0;
+    color: red;
+}
