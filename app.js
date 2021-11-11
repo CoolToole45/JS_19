@@ -14,8 +14,8 @@ const formValidator = (form, fieldsConfig, onValidateSuccess, onValidationError)
       if (rule.maxLength && `${value}`.length > rule.maxLength) {
         fieldValidationResult.errors.push(rule.message);
       }
-      if (rule.digit && `${value}` !== Number) {
-        fieldValidationResult.errors.push(rule.message);
+      if(rule.type && isNaN(Number(value))){
+        fieldValidationResult.errors.push(rule.message);      
       }
     });
 
@@ -74,7 +74,7 @@ const fieldsConfig = [
     name: 'first_name',
     rules: [
       {required: true, message: 'First name is required.'},
-      {maxLength: 10, message: 'სიბოლოების რაოდენობა უნდა იყოს 10 ზე ნაკლები ან ტოლი.'},
+      {maxLength: 10, message: 'Character limit is 10.'},
     ]
   },
   {
@@ -87,22 +87,22 @@ const fieldsConfig = [
     name: 'zip_code',
     rules: [
       {required: true, message: 'Zip Code name is required.'},
-      {digit: true, message: 'Zip Code must be a number.'}
+      {type: `number`, message: 'Zip Code must be a number.'}
     ]
   },
   {
     name: 'personal_number',
     rules: [
       {required: true, message: 'Personal Number is required.'},
-      {maxLength: 11, message: 'სიმბოლოების რაოდენობა უნდა იყოს 11-ზე ნაკლები ან ტოლი.'},
-      {digit: true, message: 'Personal Number must be a number.'},
+      {maxLength: 11, message: 'Character limit is 11.'},
+      {type: `number`, message: 'Personal Number must be a number.'}
     ]
   },
   {
     name: 'mobile_number',
     rules: [
-      {required: true, message: 'Personal Number is required.'},
-      {digit: true, message: 'Mobile Number must be a number.'},
+      {required: true, message: 'Mobile Number is required.'},
+      {type: `number`, message: 'Mobile Number must be a number.'}
     ]
   },
 ];
